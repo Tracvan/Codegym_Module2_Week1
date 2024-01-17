@@ -11,7 +11,7 @@ public class Main {
         double delta = quadraticEquation.getDiscriminant(a,b,c);
         if(delta > 0){
             double r1 = (-b + Math.sqrt(delta))/ (2*a);
-            double r2 = (-b - Math.sqrt(delta))/ (2*a);
+            double r2 = (-b - Math.sqrt(delta,2))/ (2*a);
             System.out.println("The equation has two roots " + r1 + "and " + r2);
         }else if (delta==0){
             double r = (-b + Math.sqrt(delta))/ (2*a);
