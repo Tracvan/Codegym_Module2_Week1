@@ -23,10 +23,6 @@ public class Fan {
         this.speed = speed;
     }
 
-    public boolean isOn() {
-        return on;
-    }
-
     public void setOn(boolean on) {
         this.on = on;
     }
@@ -52,7 +48,7 @@ public class Fan {
         if (on) {
             return "Speed: " + speed + ", Color: " + color + ", Radius: " + radius + ", Fan is on";
         } else {
-            return "Color: " + color + ", Radius: " + radius + ", Fan is off";
+            return "Speed: " + speed + ", Color: " + color + ", Radius: " + radius + ", Fan is off";
         }
     }
 }
