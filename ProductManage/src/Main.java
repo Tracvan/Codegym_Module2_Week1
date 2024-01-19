@@ -15,6 +15,7 @@ public class Main {
             System.out.println("2. Thêm sản phẩm");
             System.out.println("3. Sửa sản phẩm");
             System.out.println("4. Xóa sản phẩm");
+            System.out.println("0. Thoát");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -68,12 +69,12 @@ public class Main {
         scanner.nextLine();/// Nếu không ăn input Int thêm dòng scanner.nextLine()
         for (int i = 0; i < products.length; i++) {
             if (i == index) {
-                System.out.println("Input name: ");
+                System.out.println("Nhập name: ");
                 String newName = scanner.nextLine();
-                System.out.println("Input Price: ");
+                System.out.println("Nhập Price: ");
                 double newPrice = scanner.nextDouble();
                 scanner.nextLine();
-                System.out.println("Input quanlity: ");
+                System.out.println("Nhập quanlity: ");
                 int newQuanlity = scanner.nextInt();
 
                 products[i].name = newName;
