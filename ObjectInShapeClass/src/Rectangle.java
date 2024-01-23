@@ -1,13 +1,13 @@
-public class Retangle extends Shape{
+public class Rectangle extends Shape {
     private double width = 1.0;
     private double length = 1.0;
-    Retangle(){
+    Rectangle(){
     }
-    Retangle(double width, double length){
+     Rectangle(double width, double length){
         this.length =length;
         this.width = width;
     }
-    Retangle(double width, double length, String color, boolean filled){
+    public Rectangle(double width, double length, String color, boolean filled){
         super(color, filled);
         this.width = width;
         this.length =length;
@@ -16,14 +16,14 @@ public class Retangle extends Shape{
     public double getLength() {
         return length;
     }
-    public double setLength(double length){
-        return length;
+    public void setLength(double length){
+        this.length = length;
     }
     public double getWidth() {
         return width;
     }
-    public double setWidth(double width){
-         return width;
+    public void setWidth(double width){
+         this.width = width;
     }
     public double getArea(){
         return width*length;
@@ -40,16 +40,44 @@ public class Retangle extends Shape{
                 +", which is a subclass of "
                 + super.toString();
     }
-}
-class RectangleTest{
-    public static void main(String[] args) {
-        Retangle retangle = new Retangle();
-        System.out.println(retangle);
 
-        retangle = new Retangle(2.3, 5.8);
-        System.out.println(retangle);
+    public static class Shape {
+        String color = "green";
+        boolean filled = true;
+        Shape(){
+        }
 
-        retangle = new Retangle(2.5,3.8, "orange", false);
-        System.out.println(retangle);
+        Shape(String color, boolean filled) {
+            this.color = color;
+            this.filled = filled;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public boolean getFilled() {
+            return filled;
+        }
+
+        public void setFilled(boolean filled) {
+            this.filled = filled;
+        }
+
+        public boolean isFilled() {
+            return filled;
+        }
+
+        public String toString() {
+            return "A shape with color of "
+                    + getColor()
+                    +" and "
+                    + (isFilled() ? "filled" : "not filled");
+        }
     }
 }
+

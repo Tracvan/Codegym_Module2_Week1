@@ -16,6 +16,9 @@ public class Product {
         this.price = price;
         this.quantity = quantity;
     }
+    public String getName() {
+        return this.name;
+    }
 
     public String display(){
         return name + " đang được bán với giá " + price + "$ số lượng đang có là " + quantity;

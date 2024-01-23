@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static Product nyCong = new Product("Ny Công", 500, 1);
-    static Product nyKhoa = new Product("Ny Khoa", 500, 10);
+    static Product nyKhoa = new Product("Ny Khoa", 200, 10);
     static Product[] products = {nyCong, nyKhoa};
 
 
@@ -15,6 +15,7 @@ public class Main {
             System.out.println("2. Thêm sản phẩm");
             System.out.println("3. Sửa sản phẩm");
             System.out.println("4. Xóa sản phẩm");
+            System.out.println("5. Tìm sản phẩm");
             System.out.println("0. Thoát");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -33,6 +34,9 @@ public class Main {
                 case 4:
                     deleteProduct();
                     break;
+                    case 5:
+                    findByName();
+                    break;
                 case 0:
                     System.exit(0);
 
@@ -41,6 +45,7 @@ public class Main {
     }
 
     public static void display() {
+        sort();
         for (Product p : products) {
             System.out.println(p.display());
         }
@@ -61,6 +66,8 @@ public class Main {
         }
         productsNew[productsNew.length - 1] = product;
         products = productsNew;
+        sort();
+
     }
 
     public static void editProduct() {
@@ -82,8 +89,9 @@ public class Main {
                 products[i].quantity = newQuanlity;
             }
         }
-
+        sort();
     }
+
     public static void deleteProduct() {
         System.out.println("Bạn muốn xóa sản phẩm vị trí nào");
         int index = scanner.nextInt();
@@ -91,11 +99,42 @@ public class Main {
         Product[] newProduct = new Product[products.length - 1];
         for (int i = 0; i < products.length; i++) {
             if (i < index) {
-                 newProduct[i] = products[i];
-            }else if( i > index){
-                newProduct[i] = products[i+1];
+                newProduct[i] = products[i];
+            } else if (i > index) {
+                newProduct[i] = products[i + 1];
             }
         }
         products = newProduct;
+        sort();
+    }
+
+    public static void sort() {
+        for (int i = 0; i < products.length; i++) {
+            for (int j = i + 1; j < products.length; j++) {
+                if (products[j].price < products[i].price) {
+                    Product temp = products[i];
+                    products[i] = products[j];
+                    products[j] = temp;
+                }
+            }
+        }
+    }
+    public static void findByName(){
+        System.out.println("Hãy nhập tên sản phẩm");
+        boolean isFound = false;
+        String find = scanner.nextLine();
+        String result = null;
+        for (int i =0; i< products.length; i++){
+            if(products[i].getName().equals(find)){
+               isFound = true;
+               result = products[i].display();
+                break;
+            }
+        }
+        if(isFound){
+            System.out.println(result);
+        }else {
+            System.out.println("Không tìm thấy sản phẩm");
+        }
     }
 }
